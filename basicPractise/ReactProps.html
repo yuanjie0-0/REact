@@ -1,0 +1,85 @@
+<! doctype html>
+
+<html>
+    <head>
+            <meta charset="UTF-8" />
+            <title>Hello React!</title>
+            <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+            <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+            <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    </head>
+    <body>
+        <!--  state 和 props 的主要区别在于 props 是不可变的, 而state 可以根据 与用户交互来该改变 -->
+        <div id="example"></div>
+        <div id="example1"></div>
+        <script type="text/babel">
+         // 通过 组件类的 defaultProps 属性为 props 设置默认值，
+            class HelloMessage extends React.Component {
+                render() {
+                    return (
+                        <div>
+                        <h1>Hello, {this.props.name} </h1>
+                        <h2> age, {this.props.age}</h2>
+                        </div>
+                    );
+                } 
+            }
+
+            HelloMessage.defaultProps = {
+                name:'Runoob',
+                age : 12
+            };
+
+            const element = <HelloMessage />;
+
+            ReactDOM.render(
+                element,
+                document.getElementById('example')
+            );
+            //  如何在应用中组合使用  state 和 props。
+            class WebSite extends React.Component {
+                constructor() {
+                    super();
+
+                    this.state = {
+                        name: "yuanjie",
+                        site: "https://www.runoob.com"
+                    }
+                }
+
+                render(){
+                    return (
+                        <div>
+                            <Name name = {this.state.name} />
+                            <Link site = {this.state.site} />
+                        </div>
+                    )
+                }
+            }
+
+            class Name extends React.Component {
+                render() {
+                    return (
+                        <h1>{this.props.name}</h1>
+                    )
+                }
+            }
+
+            class Link extends React.Component {
+                render(){
+                    return (
+                        <a href = {this.props.site}>
+                        {this.props.site}
+                        </a>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <WebSite />,
+                document.getElementById('example1')
+            )
+
+        </script>
+    </body>
+</html>

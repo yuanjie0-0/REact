@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Hello React!</title>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    
+    <div id="example"></div>
+    <div id="example2"></div>
+    <script type="text/babel">
+        // 使用函数定义了一个组件 ,如何传输参数
+        function HelloMessage(props) {
+            return <h1>网站名称: {props.name}</h1>;
+        } 
+        // 用户自定义的组件
+        const element = <HelloMessage name="Runoob" />;
+
+        ReactDOM.render(
+            element,
+            document.getElementById('example')
+        )
+    // 复合组件
+    // 创建多个组件来合成一个组件，就是把组件的不同功能点进行分离
+
+
+    </script>
+    
+    <!-- 复合组件 -->
+    <!-- 多个组件嵌套 -->
+         <script type="text/babel">
+         // function Name(props){}  可以作为一个 <>
+            function Name(props){
+                return <h1>网站名称: {props.name}</h1>
+            };
+            function Url(props){
+                return <h1>网站地址: {props.url} </h1>
+            }
+            function NickName(props){
+                return <h1>网站小名:{props.nickname}</h1>
+            }
+            
+            function App(){
+                return (
+                    <div>
+                        <Name name="TIP" />
+                        <Url url="https:dev-tip.asiainfo-sec.com"/>
+                        <NickName nickname = "Runnoob" />
+                    </div>
+                );
+            }
+            
+            ReactDOM.render(
+                <App />,
+                document.getElementById('example2')
+            )
+
+         </script>
+
+
+<!-- React State (状态) -->
+
+<script>
+    class Clock extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {date: new Date()};
+        }
+        render() {
+            return (
+                <div>
+                 <h1>Hello World!</h1>
+                 <h2> {this.state.date } </h2>
+                 </div>
+            )
+        }
+    }
+</script>
+
+</body>
+
+</html>
