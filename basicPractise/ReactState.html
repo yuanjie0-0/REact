@@ -1,3 +1,13 @@
+<!-- Statue & 生命周期 -->
+
+<!-- 如何将一个 函数转化为 类 -->
+<!-- 
+    1 将一个 名称扩展为  React.Component 的 ES6 类      class Clock extends  React.Component{
+    2 创建一个叫做  render() 的 空方法                      render(){
+    3 将函数体移动到 render() 方法中                        return（  
+    4 在render() 方法中 ，使用 this.props 替换  props              <div>  <h2>It's {this.props.date.toLocaleTimeString}</h2>
+    5 删除剩余的空函数声明                                      );}}
+-->
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +24,10 @@
 
     <div id="example"></div>
     <div id="example2"></div>
+    <div id="app">
+        Hello
+    </div>
+
     <script type="text/babel">
 
          // 这个class 就是执行一次
@@ -73,7 +87,10 @@
             <Clock1 />,
             document.getElementById('example2')
         )
-        </script>
+    </script>
+
+
+
 
 </body>
 

@@ -1,4 +1,4 @@
-
+<!-- React 事件处理 -->
 <!doctype html>
 
 <html>
@@ -15,7 +15,7 @@
             class Toggle extends React.Component {
                 constructor(props){
                     super(props);
-                    this.state = {isToggleOn: true};
+                    this.state = {isToggleOn: false};
 
                     // 这边绑定是必要的， 这样 ’this‘  才能在 回调函数中使用
                     this.handleClick = this.handleClick.bind(this);

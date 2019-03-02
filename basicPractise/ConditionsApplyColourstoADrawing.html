@@ -1,3 +1,4 @@
+<!-- 条件渲染 -->
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +15,7 @@
 <body>
     <div id="example"></div>
     <div id="example1"></div>
+    <div id="root"></div>
     <!-- React 中, 创建不同的组件来封装各种你需要的行为，然后还可以根据应用的状态变化只渲染其中的一部分 -->
     <script type="text/babel">
 
@@ -94,6 +96,72 @@
 
         // Racct 条件渲染
     </script>
+    <script type="text/babel">
+        // 除了使用 if 还可以使用  && ,使用 花括号包裹在JSX 中嵌入任何表达式
+    function Mailbox(props) {
+    const unreadMessages = props.unreadMessages;
+        
+    return (
+        <div>
+        <h1>Hello!</h1>
+        // true && expression 总是返回 expression，而 false && expression 总是返回 false。
+        {unreadMessages.length > 0 &&
+            <h2>
+            You have {unreadMessages.length} unread messages.
+            </h2>
+        }
+        </div>
+    );
+    }
+
+    const messages = ['React', 'Re: React', 'Re:Re: React'];
+    ReactDOM.render(
+    <Mailbox unreadMessages={messages} />,
+    document.getElementById('root')
+    );
+
+    </script>
+<!-- 组织组件渲染 -->
+<div id="root1"></div>
+<script type="text/babel">
+    function WaringBanner (props) {
+        if(props.warn){
+            return null;
+        }
+        return (
+            <div className = "warining">
+                Waring!
+            </div>
+        )
+    }
+    class Page extends  React.Component{
+        constructor(props){
+            super(props);
+            this.state = {showWaring:true}
+            this.handleToggleClick = this.handleToggleClick.bind(this);
+        }
+        handleToggleClick(){
+            this.setState(prevState =>({
+                showWaring:!prevState.showWaring
+            }));
+        }
+        render(){
+            return(
+                <div>
+                    <WaringBanner warn = {this.state.showWaring} />
+                    <button onClick={this.handleToggleClick}>
+                        {this.state.showWaring ? 'hide':'show' }
+                    </button>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Page />,
+        document.getElementById('root1')
+    );
+</script>
+
 </body>
 
 </html>
