@@ -1,0 +1,54 @@
+<!-- 列表&keys -->
+<!doctype>
+<html>
+        <head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Hello React!</title>
+                <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+                <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+                <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+            </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            const numbers = [1,2,3,4,5];
+            const listItme = numbers.map((number)=>
+                <li>{number}</li>
+            );
+        ReactDOM.render(
+            <ul>
+                {listItme}
+            </ul>,
+            document.getElementById('root')
+        );
+        </script>
+
+        <div id="root1">
+        </div>
+        <script type="text/babel">
+            function NumberList(props) {
+                const numbers = props.numbers;
+                const listitems = numbers.map((number)=> 
+                <li key={number.toString()} >
+                {number}
+                </li>)
+                ;
+                return (
+                    <ul>{listitems}</ul>
+                );
+            }
+
+            const numbers = [2,3,4,5,6];
+            ReactDOM.render(
+                //  自定义的组件的名称需要  帕斯卡命名法
+                <NumberList numbers={numbers} />,  
+                document.getElementById('root1')
+            )
+
+
+
+        </script>
+    </body>
+</html>
